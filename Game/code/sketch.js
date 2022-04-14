@@ -32,8 +32,8 @@ function draw() {
   for(let i = 0; i<width; i+=100){
     image(grass, i, height-100, 100,100);
   }
-  player.update();
-  player.display();
+  update();
+  console.log(frameRate());
 }
 
 
@@ -50,19 +50,18 @@ function windowResized(){
     bgHeight = width/imgAspect;
   }
 }
-
-//runs everytime a key is pressed
+//just so we dont luanch the player like a rocket
 function keyPressed(){
-  if(keyCode === LEFT_ARROW){
-   player.xSpeed = -5;
-  }
-  if(keyCode === RIGHT_ARROW){
-    player.xSpeed = 5;
-  }
-  if(keyCode === UP_ARROW){
-  player.Jump();
-  }
-  if(keyCode === DOWN_ARROW){
-   player.ySpeed = 5;
+  if(keyCode == UP_ARROW){
+    if(player.y >= height - player.minHeight);
+    player.Jump();
   }
 }
+
+// updates the whole game(also checks for keypresses, I took away the keyPressed function cuz this looks much more natural)
+  function update(){
+    player.update();
+    player.display();
+
+  }
+ 

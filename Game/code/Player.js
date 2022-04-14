@@ -1,8 +1,8 @@
 class Player{
 
      constructor(){
-        this.xSpeed = 0;//this stores the horizontal speed of the player
-        this.ySpeed = 0;//this stores the vertical speed of the player
+        this.xSpeed = constrain(0,0,5);//this stores the horizontal speed of the player
+        this.ySpeed = constrain(0, 0,5);//this stores the vertical speed of the player
         this.x = 0;//this is the x position of the player
         this.y = 0;//this is the y position of the player
         this.width = 50;//width of player
@@ -22,11 +22,25 @@ class Player{
      }
     ///this updates the players position and applies gravity
      update(){
-         if(this.x < 0 || this.x + 50 > width)
-            this.xSpeed = !this.xSpeed;
         this.x += this.xSpeed;
         this.y += this.ySpeed;
         this.gravity();
+
+        if (keyIsDown(LEFT_ARROW)) {
+            this.xSpeed -= 5;
+        }else if (keyIsDown(RIGHT_ARROW)) {
+            this.xSpeed += 5;
+        }else{
+            this.xSpeed -= this.xSpeed;
+        }
+
+        if(this.x < 0 ){
+            this.x = 0 ;
+        }else if(this.x + 50 > width){
+            this.x = width-50;
+        }
+            
+
     }
     // this function applies gravity by changing the velocity of the player
      gravity(){
