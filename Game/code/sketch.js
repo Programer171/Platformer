@@ -6,8 +6,8 @@ let bgWidth, bgHeight;
 
 function preload() {
   // runs once to load all the files needed
-  bg = loadImage('../Assets/morning.png');//loadImage 
-  grass = loadImage('../Assets/grass.png');//loadImage
+  bg = loadImage('/Game/Assets/morning.png');//loadImage 
+  grass = loadImage('/Game/Assets/grass.png');//loadImage
 }
 
 //this function runs once everytime the page is reloaded or opened like the main function in java
