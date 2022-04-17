@@ -14,6 +14,7 @@ class Player{
         this.fallingSpeed = 2;//gravity
         this.minHeight = 90;//this is the height of the ground
         this.acceleration = 2;//this is the acceleration of the player
+        this.digging = false;
      }
     //this function displays the player, it is run everyframe to show movement
      display(){
@@ -27,9 +28,13 @@ class Player{
         this.gravity();
 
         if (keyIsDown(LEFT_ARROW)) {
-            this.xSpeed -= 5;
+            //if(xSpeed >= -10)
+                this.xSpeed -= 5;
         }else if (keyIsDown(RIGHT_ARROW)) {
-            this.xSpeed += 5;
+            //if(xSpeed >= 10)
+                this.xSpeed += 5;
+        }else if(keyIsDown(DOWN_ARROW)) { //check for digging
+            this.dig();
         }else{
             this.xSpeed -= this.xSpeed;
         }
@@ -53,6 +58,20 @@ class Player{
     //jump function
     Jump(){
         this.ySpeed = -this.jumpPower;       
+    }
+
+    //check if block is near the player in a specific direction
+    checkBlock(){
+
+
+    }
+
+    //dig function
+    dig(){
+        //If player is next to a dirt/rock/ore block
+        //Bolean validBlock?
+        //if arrow goes to adjust block: dig
+
     }
 
 }
