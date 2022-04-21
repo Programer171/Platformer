@@ -1,26 +1,25 @@
 class GridBox {
-    //make an array which has length corresponding to the canvas size
-    constructor(x, y){
-        this.x = x;
-        this.y = y;
-        this.items = [];
+    constructor(rows, cols){
+        this.rows = rows;
+        this.cols = cols;
+        this.cells = [];
+        for(let r=0; r<rows; r++){
+          this.cells.push([]);
+          for(let c=0; c<cols; c++){
+            this.cells[r].push(new Block(r, c));
+          }
+        }
+      }
+      draw(){
+        const size = min(width/this.cols, height/this.rows);
+        const w = size * this.cols, h = size * this.rows;
+        push();
+        translate((width-w)/2, (height-h)/2); // center the grid
+        for(const rows of this.cells){
+          for(const block of rows){
+            block.draw(size);
+          }
+        }
+        pop();
+      }
     }
-
-    set(arrayOfObjects){
-        this.items = arrayOfObjects;
-    }
-
-    //objects: blocks, ores, grass
-    add(object){
-        this.items.push(object);
-    }
-    //remove objects, given the index, and object
-    remove(object){
-        if(this.items.indexOf(object) !=-1)
-            this.items.splice(this.items.indexOf(object), 1);
-    }
-
-    
-
-
-}
